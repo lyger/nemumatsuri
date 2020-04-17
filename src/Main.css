@@ -1,6 +1,12 @@
-html, body, #root {
+html, body {
     width: 100%;
     height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+div {
+    box-sizing: border-box;
 }
 
 svg {
@@ -9,4 +15,31 @@ svg {
     margin-right: auto;
     width: auto;
     height: 100vh;
+}
+
+svg > * {
+    transition: fill 2s;
+}
+
+.side-menu {
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: white;
+    padding: 1em;
+}
+
+.swatch {
+    margin: 0.5em;
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 0px 2px rgba(255,255,255,1), 1px 1px 5px 0px rgba(0,0,0,0.75);
+}
+
+.swatch.selected {
+    border: 2px solid black;
 }

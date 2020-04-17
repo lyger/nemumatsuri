@@ -5,9 +5,9 @@ import Lower from './ebifrion/lower';
 export default function Ebifrion(props) {
   return (
     <React.Fragment>
-      <Lower />
+      <Lower {...props} />
       {props.children}
-      <Upper />
+      <Upper {...props} />
     </React.Fragment>
   )
 }
