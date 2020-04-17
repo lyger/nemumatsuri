@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/nemumatsuri/static/css/main.d35d2e90.chunk.css",
+    "main.js": "/nemumatsuri/static/js/main.11beafbe.chunk.js",
+    "main.js.map": "/nemumatsuri/static/js/main.11beafbe.chunk.js.map",
+    "runtime-main.js": "/nemumatsuri/static/js/runtime-main.ca76f3bb.js",
+    "runtime-main.js.map": "/nemumatsuri/static/js/runtime-main.ca76f3bb.js.map",
+    "static/js/2.72746afe.chunk.js": "/nemumatsuri/static/js/2.72746afe.chunk.js",
+    "static/js/2.72746afe.chunk.js.map": "/nemumatsuri/static/js/2.72746afe.chunk.js.map",
+    "index.html": "/nemumatsuri/index.html",
+    "precache-manifest.8ffe516e981c02e5fa32502aebb10b4e.js": "/nemumatsuri/precache-manifest.8ffe516e981c02e5fa32502aebb10b4e.js",
+    "service-worker.js": "/nemumatsuri/service-worker.js",
+    "static/css/main.d35d2e90.chunk.css.map": "/nemumatsuri/static/css/main.d35d2e90.chunk.css.map",
+    "static/js/2.72746afe.chunk.js.LICENSE.txt": "/nemumatsuri/static/js/2.72746afe.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ca76f3bb.js",
+    "static/js/2.72746afe.chunk.js",
+    "static/css/main.d35d2e90.chunk.css",
+    "static/js/main.11beafbe.chunk.js"
+  ]
+}
