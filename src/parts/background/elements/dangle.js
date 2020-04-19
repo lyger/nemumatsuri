@@ -4,7 +4,7 @@ import { ColorContext } from '../../../colorscheme';
 
 
 export default function Dangle({ x, y, swing, children }) {
-  const [ { backgroundColors } ] = useContext(ColorContext);
+  const [ { dressingColors } ] = useContext(ColorContext);
   const variants = {
     hide: {
       y: y - 1080,
@@ -26,7 +26,7 @@ export default function Dangle({ x, y, swing, children }) {
       variants={variants}
       animate={["show", "idle"]}
       exit="hide">
-      <path d="M0,-2000 L0,0" style={{stroke: backgroundColors.STRING, strokeWidth: 4}} />
+      <path d="M0,-2000 L0,0" style={{stroke: dressingColors.STRING, strokeWidth: 4}} />
       {children}
     </motion.g>
   );

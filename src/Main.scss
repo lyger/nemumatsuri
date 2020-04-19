@@ -1,0 +1,113 @@
+@import "bulma";
+@import "~bulma-slider";
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: $dark;
+    overflow-y: hidden;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+svg.main {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: 100vh;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7);
+}
+
+svg.main > * {
+    transition: fill 2s;
+}
+
+.side-menu-close-target {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+}
+
+.side-menu {
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: white;
+    padding: 1em;
+    z-index: 100;
+}
+
+$side-menu-handle-radius: 40px;
+$side-menu-bg-color: white;
+
+.side-menu-handle {
+    position: absolute;
+    right: -$side-menu-handle-radius;
+    top: calc(50% - #{$side-menu-handle-radius});
+    width: $side-menu-handle-radius;
+    height: 2 * $side-menu-handle-radius;
+    background-color: $side-menu-bg-color;
+    border-top-right-radius: $side-menu-handle-radius;
+    border-bottom-right-radius: $side-menu-handle-radius;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    font-size: 2em;
+}
+
+.side-menu-color-picker {
+    position: absolute;
+    border-top-right-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    background-color: $side-menu-bg-color;
+    top: 0;
+    padding: 1em;
+    right: calc(-225px - 2em);
+}
+
+.side-menu-column {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pad-left-1 {
+    padding-left: 1em!important;
+}
+
+.pad-right-1 {
+    padding-right: 1em!important;
+}
+
+.swatch {
+    box-shadow: inset 0px 0px 0px 2px rgba(255,255,255,1);
+    padding-left: 1.2em!important;
+    padding-right: 1.2em!important;
+}
+
+.swatch.selected {
+    box-shadow: inset 0px 0px 0px 2px $dark;
+}
+
+.buttons .button.is-rounded {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.buttons .button.is-rounded:first-child {
+    padding-left: 1em;
+}
+
+.buttons .button.is-rounded:last-child {
+    padding-right: 1em;
+}

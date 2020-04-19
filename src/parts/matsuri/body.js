@@ -3,8 +3,8 @@ import { motion, useAnimation } from 'framer-motion';
 import { ColorContext } from '../../colorscheme';
 
 export default function Body({ children }) {
-  const bellyControl = useAnimation();
   const [ { matsuriColors } ] = useContext(ColorContext);
+  const bellyControl = useAnimation();
 
   return (
     <g>

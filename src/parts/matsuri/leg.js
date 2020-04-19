@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 import { ColorContext } from '../../colorscheme';
+import { SceneContext } from '../../scene';
 
-export default function Leg({ rate, swing }) {
-  const [{ matsuriColors } ] = useContext(ColorContext);
+export default function Leg() {
+  const [ { rate, swing } ] = useContext(SceneContext);
+  const [ { matsuriColors } ] = useContext(ColorContext);
   const legSwing = swing * 0.6;
   return (
     <motion.g

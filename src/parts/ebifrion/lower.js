@@ -1,9 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { ColorContext } from '../../colorscheme';
+import { SceneContext } from '../../scene';
 
-export default function Lower({ rate }) {
-  const [{ ebifrionColors } ] = useContext(ColorContext);
+
+export default function Lower() {
+  const [ { rate } ] = useContext(SceneContext);
+  const [ { ebifrionColors } ] = useContext(ColorContext);
   const legSwingSpan = 10;
   const tailVariants = {
     largeFlick: {
@@ -69,7 +72,7 @@ export default function Lower({ rate }) {
 
       <motion.path
         id="ebifrion_leg_bottom"
-        animate={{rotate: [-legSwingSpan, legSwingSpan, -legSwingSpan]}}
+        animate={{rotate: [-legSwingSpan - 10, legSwingSpan - 10, -legSwingSpan - 10]}}
         transition={{ease: 'easeInOut', duration: rate, loop: Infinity}}
         d="m 764.24998,753.37498 c 0,0 -11.77121,58.64808 3.75001,74.25003 14.77519,14.85204 60.00001-0.00003 83.625-16.87501 21.07525-15.05375 -87.375-57.37501 -87.375-57.37501 0,0 0,0 0,0"
         style={{fill: ebifrionColors.SKIN_SHADOW, originX: '820px', originY: '740px'}} />

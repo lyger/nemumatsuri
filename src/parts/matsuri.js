@@ -5,15 +5,15 @@ import Body from './matsuri/body';
 import { RightArm, LeftArm } from './matsuri/arms';
 import Leg from './matsuri/leg'
 
-export default function Matsuri(props) {
+export default function Matsuri() {
   return (
     <motion.g id="matsuri">
-      <Leg {...props} />
-      <Body {...props}>
-        <LeftArm {...props} />
-        <Head {...props} />
+      <Leg />
+      <Body>
+        <LeftArm />
+        <Head />
       </Body>
-      <RightArm {...props} />
+      <RightArm />
     </motion.g>
   )
 }

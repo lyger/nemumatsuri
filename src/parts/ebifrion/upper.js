@@ -2,11 +2,12 @@ import React, { useContext } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { ColorContext } from '../../colorscheme';
 
+
 export default function Upper() {
-  const [{ ebifrionColors } ] = useContext(ColorContext);
+  const [ { ebifrionColors } ] = useContext(ColorContext);
   const mouthControl = useAnimation();
   return (
-    <g>
+    <g style={{transform: 'translate(15px, 20px)'}}>
       
       <defs>
 

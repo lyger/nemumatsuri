@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { ColorContext } from '../../colorscheme';
 import Shoulders from './shoulders';
+import { SceneContext } from '../../scene';
 
 function SideTail({ rate, swing }) {
   const [{ matsuriColors } ] = useContext(ColorContext);
@@ -34,8 +35,9 @@ function SideTail({ rate, swing }) {
   );
 }
 
-export default function Head({ rate, swing }) {
-  const [{ matsuriColors } ] = useContext(ColorContext);
+export default function Head() {
+  const [ { rate, swing }] = useContext(SceneContext);
+  const [ { matsuriColors } ] = useContext(ColorContext);
   const headSwing = swing * 0.5;
   const breathRate = rate * 1.4;
   const variants = {

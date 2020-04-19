@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 import { ColorContext } from '../../colorscheme';
+import { SceneContext } from '../../scene';
 
-export function LeftArm({ rate, swing }) {
-  const [{ matsuriColors } ] = useContext(ColorContext);
+export function LeftArm() {
+  const [ { rate, swing } ] = useContext(SceneContext);
+  const [ { matsuriColors } ] = useContext(ColorContext);
   const armSwing = swing * 0.6;
   return (
     <motion.path
@@ -15,7 +17,8 @@ export function LeftArm({ rate, swing }) {
   );
 }
 
-export function RightArm({ rate }) {
+export function RightArm() {
+  const [ { rate } ] = useContext(SceneContext);
   const [{ matsuriColors } ] = useContext(ColorContext);
   return (
     <g style={{transform: 'translateY(10px)'}}>
