@@ -2,19 +2,19 @@ import { useEffect, useReducer } from 'react';
 
 
 function isObject (value) {
-  return value && typeof value === 'object' && value.constructor === Object;
+  return value !== undefined && value !== null && typeof value === 'object' && value.constructor === Object;
 }
 
 
 function equalKeys(a, b) {
   const aKeys = Object.keys(a).sort();
   const bKeys = Object.keys(b).sort();
-  if (JSON.stringify(aKeys) !== JSON.stringify(bKeys)) return false;
+  if (JSON.stringify(aKeys) !== JSON.stringify(bKeys))  return false;
   return aKeys.reduce((acc, key) => {
     const aIsObj = isObject(a[key]);
     const bIsObj = isObject(b[key]);
     if (aIsObj !== bIsObj) return false;
-    if (aIsObj && bIsObj) return equalKeys(a[key], b[key]);
+    if (aIsObj && bIsObj) return acc && equalKeys(a[key], b[key]);
     return acc;
   }, true);
 }

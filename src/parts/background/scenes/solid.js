@@ -9,7 +9,7 @@ export default function Solid({ n }) {
   const centerWidth = 1920 - (2 * strokeWidth * n) + 2;
   const centerHeight = 1080 - (2 * strokeWidth * n) + 2;
   const parentVariants = {
-    hide: {transition: {staggerChildren: 0.1, staggerDirection: -1}},
+    hide: {transition: {staggerChildren: 0.1, staggerDirection: -1, delayChildren: 1}},
     show: {transition: {staggerChildren: 0.1}},
   };
   const childVariants = {

@@ -54,10 +54,10 @@ export function Moon({ tilt, r }) {
 }
 
 
-export function Heart({ color, tilt, skewX, skewY, pulse }) {
+export function Heart({ color, scale, tilt, skew, pulse }) {
   const filterId = 'heartFilter' + Math.random().toString(36).substr(2, 9);
   return (
-    <motion.g>
+    <g>
       <filter id={filterId}>
         <motion.feGaussianBlur
           in="SourceGraphic"
@@ -66,8 +66,8 @@ export function Heart({ color, tilt, skewX, skewY, pulse }) {
       </filter>
       <path
         d="m 0,-25 a 21.213203,21.213203 0 0 0 -30,30 l 27,27 a 4.42426,4.2426 0 0 0 6,0 l 27,-27 a 21.213203,21.213203 0 0 0 -30,-30"
-        style={{fill: color, transform: `rotate(${tilt || 0}deg) skewX(${skewX || 0}) skewY(${skewY || 0})`}}
+        style={{fill: color, transform: `rotate(${tilt || 0}deg) skewX(${skew || 0}deg) scale(${scale || 1})`}}
         filter={`url(#${filterId})`} />
-    </motion.g>
+    </g>
   );
 }

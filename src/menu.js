@@ -109,6 +109,10 @@ export default function Menu() {
     setCollapsed(!collapsed);
     setSelection(null);
   }
+  function setGB() {
+    colorDispatch({type: 'CHANGE_COLOR', value: {group: 'backgroundColors', key: 'BACKGROUND', color: '#00ff00'}});
+    colorDispatch({type: 'CHANGE_COLOR', value: {group: 'objectColors', key: 'PAPER_GB', color: '#00ff00'}});
+  }
   return (
     <React.Fragment>
       {!collapsed && <div className="side-menu-close-target" onClick={toggleCollapse} />}
@@ -136,7 +140,7 @@ export default function Menu() {
         <LabeledRow>
           <button
             className="button is-rounded is-light"
-            onClick={() => colorDispatch({type: 'CHANGE_COLOR', value: {group: 'backgroundColors', key: 'BACKGROUND', color: '#00ff00'}})}>
+            onClick={setGB}>
             <strong>GB</strong>
           </button>
           <ColorSelector group="backgroundColors" keys={['BACKGROUND']} selection={selection} onSelect={setSelection} />
@@ -178,19 +182,18 @@ export default function Menu() {
           value={scene.bob} min={0} max={60} step={1}
           onChange={(e) => sceneDispatch({type: 'SET_BOB', value: parseFloat(e.target.value)})} />
 
-        <div className="buttons is-centered">
+        <div className="buttons has-addons is-centered">
           <button
             className="button is-rounded is-light"
-            onClick={() => { colorDispatch({type: 'RESET'}); sceneDispatch({type: 'RESET'}); }}>
-            <i className="fas fa-sync" />
+            onClick={() => colorDispatch({type: 'RESET'})}>
+            <i className="fas fa-times" />&nbsp;<i className="fas fa-palette" />
+          </button>
+          <button
+            className="button is-rounded is-light"
+            onClick={() => sceneDispatch({type: 'RESET'})}>
+            <i className="fas fa-times" />&nbsp;<i className="fas fa-arrows-alt" />
           </button>
         </div>
-
-        {['matsuriColors', 'ebifrionColors'].map(
-          (group, i) => 
-            <ColorSelector group={group} keys={Object.keys(colors[group])} selection={selection} onSelect={setSelection} />
-        )}
-        <button className="button is-rounded is-light" onClick={() => console.log(JSON.stringify(colors))}>Output to console</button>
 
         <motion.div
           className="side-menu-handle" onClick={toggleCollapse}

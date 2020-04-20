@@ -4,7 +4,9 @@ import Stripes from './parts/background/scenes/stripes';
 import Dots from './parts/background/scenes/dots';
 import Solid from './parts/background/scenes/solid';
 import NightSky from './parts/background/scenes/nightsky';
+import HeartScatter from './parts/background/scenes/heartscatter';
 import Castle from './parts/background/elements/castle';
+import Letters from './parts/background/scenes/letters';
 
 export const BACKDROPS = [
   {
@@ -35,6 +37,11 @@ export const DRESSINGS = [
     element: <NightSky key="nightsky" />,
     colors: { group: 'dressingColors', keys: ['STAR', 'MOONSHADOW', 'STRING'] },
   },
+  {
+    icon: <i className="fas fa-heart" />,
+    element: <HeartScatter key="heartscatter" />,
+    colors: { group: 'dressingColors', keys: ['HEART1', 'HEART2', 'HEART3'] },
+  },
 ];
 
 export const OBJECTS = [
@@ -44,10 +51,15 @@ export const OBJECTS = [
     colors: { group: 'objectColors', keys: [] },
   },
   {
-    icon: <i className="fab fa-fort-awesome" />,
+    icon: <i className="fab fa-fort-awesome" style={{marginLeft: 1, marginRight: 1}} />,
     element: <Castle key="castle" />,
     colors: { group: 'objectColors', keys: ['CASTLE'] },
-  }
+  },
+  {
+    icon: <i className="fas fa-envelope" />,
+    element: <Letters key="letters" />,
+    colors: { group: 'objectColors', keys: ['ENVELOPE_BODY', 'ENVELOPE_FLAP', 'PAPER', 'PAPER_GB'] },
+  },
 ]
 
 const initialState = {

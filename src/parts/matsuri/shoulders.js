@@ -4,8 +4,10 @@ import { ColorContext } from '../../colorscheme';
 
 export default function Shoulders({ rate }) {
   const breathSpan = 2.5;
-  const [{ matsuriColors } ] = useContext(ColorContext);
-
+  const [ { matsuriColors } ] = useContext(ColorContext);
+  const variants = {
+    shoulders: {y: [breathSpan, -breathSpan, breathSpan], transition: {ease: 'easeInOut', duration: rate * 0.7, loop: Infinity, repeatDelay: rate * 0.3}},
+  };
   return (
     <g>
 
@@ -14,8 +16,8 @@ export default function Shoulders({ rate }) {
         <motion.path
           id="skin_shoulders"
           d="m 954,428.625 c 0,0 14.62499,0.375 27.74999,2.625 13.125,2.25 22.50001,7.87499 26.62501,15.75 4.125,7.87499 5.3598,5.02119 5.3598,22.64617 -73.79321,41.03107 -127.98629,48.6469 -180.81562,2.88465 -0.52257,-17.38191 2.90282,-23.75497 11.26463,-30.67003 24.90114,-20.59282 109.81604,-13.23578 109.81604,-13.23578 h 1.4e-4"
-          animate={{y: [breathSpan, -breathSpan, breathSpan]}}
-          transition={{ease: 'easeInOut', duration: rate * 0.7, loop: Infinity, repeatDelay: rate * 0.3}}
+          variants={variants}
+          animate={['shoulders', `${rate}`]}
           style={{fill: matsuriColors.SKIN}} />
 
         <clipPath id="skin_shoulders_clip">

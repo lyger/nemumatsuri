@@ -7,10 +7,13 @@ export default function Leg() {
   const [ { rate, swing } ] = useContext(SceneContext);
   const [ { matsuriColors } ] = useContext(ColorContext);
   const legSwing = swing * 0.6;
+  const variants = {
+    leg: {rotate: [legSwing, -legSwing, legSwing], transition: {ease: 'easeInOut', duration: rate * 1.7, loop: Infinity}},
+  };
   return (
     <motion.g
-      animate={{rotate: [legSwing, -legSwing, legSwing]}}
-      transition={{ease: 'easeInOut', duration: rate * 1.7, loop: Infinity}}
+      variants={variants}
+      animate={['leg', `r${rate}s${swing}`]}
       style={{originX: '1110px', originY: '485px'}}>
 
       <defs>

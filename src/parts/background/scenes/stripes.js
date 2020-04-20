@@ -10,8 +10,8 @@ export default function Stripes({ n }) {
     xCoords.push((x + 0.5) * stripeWidth);
   }
   const parentVariants = {
-    hide: {transition: {staggerChildren: 0.1}},
-    show: {transition: {staggerChildren: 0.1}},
+    hide: {transition: {staggerChildren: 0.05, delayChildren: 1}},
+    show: {transition: {staggerChildren: 0.05}},
   };
   const childVariants = {
     hide: { pathLength: 0, transition: { ease: 'easeOut', duration: 0.5} },
@@ -29,11 +29,13 @@ export default function Stripes({ n }) {
             key={i}
             d={`M${x},1080 L${x},0`}
             variants={childVariants}
+            strokeDasharray="0 1"
             style={{stroke: backgroundColors.BACK_BG, strokeWidth: stripeWidth}} />
         : <motion.path
             key={i}
             d={`M${x},0 L${x},1080`}
             variants={childVariants}
+            strokeDasharray="0 1"
             style={{stroke: backgroundColors.BACK_FG, strokeWidth: stripeWidth}} />)}
     </motion.g>
   );

@@ -8,11 +8,11 @@ export default function Dangle({ x, y, swing, children }) {
   const variants = {
     hide: {
       y: y - 1080,
-      transition: { type: 'spring', stiffness: 50, damping: 5, mass: 0.8, delay: 1 + swing / 20 },
+      transition: { type: 'spring', stiffness: 50, damping: 5, mass: 0.8, delay: 0.75 + swing / 20 },
     },
     show: {
       y: y,
-      transition: { type: 'spring', stiffness: 50, damping: 5, mass: 0.8, delay: 1 + swing / 20 },
+      transition: { type: 'spring', stiffness: 50, damping: 5, mass: 0.8, delay: 0.75 + swing / 20 },
     },
     idle: {
       rotate: 0,

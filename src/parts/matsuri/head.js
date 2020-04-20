@@ -7,11 +7,14 @@ import { SceneContext } from '../../scene';
 function SideTail({ rate, swing }) {
   const [{ matsuriColors } ] = useContext(ColorContext);
   const sideTailSwing = swing * 0.8;
+  const variants = {
+    sideTail: {rotate: [sideTailSwing, -sideTailSwing, sideTailSwing], transition: {ease: 'easeInOut', delay: rate * 0.15, duration: rate, loop: Infinity}},
+  };
   return (
     <motion.g
-      animate={{rotate: [sideTailSwing, -sideTailSwing, sideTailSwing]}}
-      style={{originX: '930px', originY: '245px'}}
-      transition={{ease: 'easeInOut', delay: rate * 0.15, duration: rate, loop: Infinity}}>
+      variants={variants}
+      animate={['sideTail', `r${rate}s${swing}`]}
+      style={{originX: '930px', originY: '245px'}}>
 
       <defs>
         <path
@@ -36,8 +39,9 @@ function SideTail({ rate, swing }) {
 }
 
 export default function Head() {
-  const [ { rate, swing }] = useContext(SceneContext);
+  const [ { rate, swing } ] = useContext(SceneContext);
   const [ { matsuriColors } ] = useContext(ColorContext);
+  const rerenderKey = `r${rate}s${swing}`;
   const headSwing = swing * 0.5;
   const breathRate = rate * 1.4;
   const variants = {
@@ -59,7 +63,7 @@ export default function Head() {
   };
   const ahogeControl = useAnimation();
   const ahogeLoop = () => { ahogeControl.start('smallFlick').then(ahogeLoop) };
-  useEffect(ahogeLoop, []);
+  useEffect(ahogeLoop, [ahogeControl, rate]);
   const faceVariants = {
     squashX: {
       scaleX: 1,
@@ -75,7 +79,7 @@ export default function Head() {
     <React.Fragment>
 
       <motion.g
-        animate={'sway'}
+        animate={['sway', rerenderKey]}
         style={style}
         variants={variants}>
         <SideTail rate={rate} swing={swing} />
@@ -89,7 +93,7 @@ export default function Head() {
         style={{fill: matsuriColors.HAIR}} />
 
       <motion.g
-        animate={'sway'}
+        animate={['sway', rerenderKey]}
         style={style}
         variants={variants}>
 

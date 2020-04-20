@@ -7,10 +7,13 @@ export function LeftArm() {
   const [ { rate, swing } ] = useContext(SceneContext);
   const [ { matsuriColors } ] = useContext(ColorContext);
   const armSwing = swing * 0.6;
+  const variants = {
+    arm: {rotate: [armSwing, -armSwing, armSwing], transition: {ease: 'easeInOut', duration: rate, delay: rate * 0.3, loop: Infinity}},
+  };
   return (
     <motion.path
-      animate={{rotate: [armSwing, -armSwing, armSwing]}}
-      transition={{ease: 'easeInOut', duration: rate, delay: rate * 0.3, loop: Infinity}}
+      variants={variants}
+      animate={['arm', `${rate}`]}
       id="skin_arm_left"
       d="m 964.50001,449.625 c 0,0 4.31246,-15.00001 19.12499,-15.56252 13.30688,-0.5053 21,5.8125 25.125,13.68751 4.125,7.87499 5.25,34.5 5.25,52.125 0,17.625 -0.75,40.49997 -2.25,47.24997 -1.5,6.75003 -10.5,27 -18.00001,40.87502 -7.49999,13.875 -12.37499,25.125 -12.37499,25.125 0,0 3.5625,8.25001 3.93749,14.99998 0.375,6.75 -0.18737,12.75001 0,14.8125 0.18765,2.06252 4.125,4.68751 3.75001,7.31251 -0.37502,2.625 -5.62501,4.125 -8.43752,6.375 -2.81248,2.25 -1.3125,4.31249 -4.68748,5.24999 -3.37501,0.9375 -7.50002,-1.68749 -13.125,-6.18749 -5.62501,-4.5 -8.81249,-8.0625 -10.12501,-10.49998 -1.3125,-2.43751 -2.43748,-11.06252 -2.99999,-20.62502 -0.56251,-9.56248 -0.56251,-19.49998 0.18737,-23.24999 0.74999,-3.74998 8.24998,-26.0625 12.37499,-40.125 4.125,-14.06251 8.0625,-27.56251 8.0625,-27.56251 0,0 -1.12499,-16.31248 -3.74998,-34.31248 -3.632,-25.76197 -5.01392,-36.94967 -2.06234,-49.68749 v 0"
       style={{fill: matsuriColors.SKIN, originX: "985px", originY: "450px"}} />
@@ -20,12 +23,15 @@ export function LeftArm() {
 export function RightArm() {
   const [ { rate } ] = useContext(SceneContext);
   const [{ matsuriColors } ] = useContext(ColorContext);
+  const variants = {
+    arm: {rotate: [5, 1, 5], transition: {ease: 'easeInOut', duration: rate * 1.4, delay: rate * 0.2, loop: Infinity}},
+  };
   return (
     <g style={{transform: 'translateY(10px)'}}>
       <motion.path
         id="skin_arm_right"
-        animate={{rotate: [5, 1, 5]}}
-        transition={{ease: 'easeInOut', duration: rate * 1.4, delay: rate * 0.2, loop: Infinity}}
+        variants={variants}
+        animate={['arm', `${rate}`]}
         d="m 879.01189,511.0798 c 0,0 0.30637,9.54471 1.37962,12.45691 1.0732,2.91217 4.25976,3.95912 5.32843,5.81068 1.06866,1.85156 3.07823,5.06112 5.20866,7.17324 2.13052,2.11218 13.04751,1.68724 14.90817,2.73991 1.86075,1.05262 7.56692,7.29366 12.02434,5.56654 3.18838,-1.23542 3.03449,-7.26565 2.47901,-13.09694 -0.55565,-5.83129 -2.16292,-19.58372 -4.84313,-26.20134 -2.6803,-6.61762 -7.4179,-16.97168 -10.07637,-18.55123 -2.65853,-1.57952 -22.65508,-15.7773 -53.70083,-20.68152 -31.0458,-4.90422 -51.67967,-5.52251 -58.8208,-1.249 -7.14107,4.27348 -10.54698,13.8342 -9.72286,20.45985 0.82392,6.62564 4.05751,18.54422 19.99015,23.77882 15.93264,5.2346 25.19269,0.42163 41.63168,0.0856 16.43896,-0.3361 34.21395,1.70855 34.21395,1.70855 0,0 0,0 0,0"
         style={{fill: matsuriColors.SKIN, originX: '805px', originY: '480px'}} />
       <path
