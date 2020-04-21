@@ -38,7 +38,7 @@ export const DRESSINGS = [
     colors: { group: 'dressingColors', keys: ['STAR', 'MOONSHADOW', 'STRING'] },
   },
   {
-    icon: <i className="fas fa-heart" />,
+    icon: <i className="fas fa-heart" style={{marginLeft: 1, marginRight: 1}} />,
     element: <HeartScatter key="heartscatter" />,
     colors: { group: 'dressingColors', keys: ['HEART1', 'HEART2', 'HEART3'] },
   },
@@ -56,7 +56,7 @@ export const OBJECTS = [
     colors: { group: 'objectColors', keys: ['CASTLE'] },
   },
   {
-    icon: <i className="fas fa-envelope" />,
+    icon: <i className="fas fa-envelope" style={{marginLeft: 1, marginRight: 1}} />,
     element: <Letters key="letters" />,
     colors: { group: 'objectColors', keys: ['ENVELOPE_BODY', 'ENVELOPE_FLAP', 'PAPER', 'PAPER_GB'] },
   },

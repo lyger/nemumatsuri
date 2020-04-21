@@ -45,8 +45,15 @@ svg.main > * {
     left: 0;
     top: 0;
     background-color: white;
-    padding: 1em;
     z-index: 100;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.side-menu-content {
+    width: 100%;
+    margin: 1.5em;
 }
 
 $side-menu-handle-radius: 40px;

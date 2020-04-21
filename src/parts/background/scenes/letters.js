@@ -28,7 +28,7 @@ export default function Letters() {
   };
   const variants3 = {
     hide: {
-      rotate: -55,
+      rotate: -60,
       transition: {ease: 'easeIn', duration: 0.7},
     },
     show: {
@@ -57,11 +57,11 @@ export default function Letters() {
     },
     recolor: {
       fill: objectColors.PAPER_GB,
-      transition: {ease: 'easeInOut', duration: 0.5, delay: 1}
+      transition: {ease: 'easeInOut', duration: 0.2, delay: 1}
     },
     uncolor: {
       fill: objectColors.PAPER,
-      transition: {ease: 'easeInOut', duration: 0.1}
+      transition: {ease: 'easeInOut', duration: 0.2}
     },
   };
   return (

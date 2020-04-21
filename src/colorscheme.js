@@ -2,49 +2,6 @@ import React, { createContext } from 'react';
 import { useLocalStorageReducer } from './util';
 
 
-const initialState_OLD = {
-  backgroundColors: {
-    BACKGROUND: '#bfe7ff',
-    BACK_FG: '#a1c6ff',
-    BACK_BG: '#bfe7ff',
-  },
-  dressingColors: {
-    STAR: '#fffb8d',
-    MOONSHADOW: '#8da8f0',
-    STRING: '#676975',
-    HEART1: '#ff8295',
-    HEART2: '#ffd1ea',
-    HEART3: '#f0feff',
-  },
-  objectColors: {
-    CASTLE: '#6688de',
-  },
-  matsuriColors: {
-    EYES: '#796d5e',
-    SKIN: '#ffe4c5',
-    SKIN_SHADOW: '#fdcebf',
-    HAIR: '#a98963',
-    HAIR_SHADOW: '#a17955',
-    YELLOW: '#fffa8b',
-    YELLOW_SHADOW: '#f7e085',
-    BLACK: '#574b40',
-  },
-  ebifrionColors: {
-    MANE: '#c99659',
-    MANE_SHADOW: '#c58453',
-    BODY: '#ffc86c',
-    BODY_SHADOW: '#fdb561',
-    SKIN: '#ffe3aa',
-    SKIN_SHADOW: '#fdcbaf',
-    TAIL: '#ff9e83',
-    TAIL_SHADOW: '#f58d99',
-    MOUTH: '#fff3e3',
-    FEATURES: '#796d5e',
-    BLUSH: '#feb7a8',
-  },
-};
-
-// Sorekasho's suggestion
 const initialState = {
   backgroundColors: {
     BACKGROUND: '#cfeeff',
