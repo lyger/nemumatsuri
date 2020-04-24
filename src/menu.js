@@ -3,7 +3,7 @@ import { useShortcuts } from './util';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ColorContext } from './colorscheme';
 import { ChromePicker } from 'react-color';
-import { SceneContext, BACKDROPS, DRESSINGS, OBJECTS } from './scene';
+import { SceneContext, BACKDROPS, DRESSINGS, OBJECTS, SPECIALS } from './scene';
 
 
 function LabeledRow({ children }) {
@@ -167,6 +167,13 @@ export default function Menu() {
             index={scene.objectIndex}
             colorSelection={selection}
             onScenerySelect={(i) => sceneDispatch({type: 'SET_OBJECT', value: i})}
+            onColorSelect={setSelection} />
+
+          <ScenerySelector
+            options={SPECIALS}
+            index={scene.specialIndex}
+            colorSelection={selection}
+            onScenerySelect={(i) => sceneDispatch({type: 'SET_SPECIAL', value: i})}
             onColorSelect={setSelection} />
 
           <Slider
