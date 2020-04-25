@@ -54,6 +54,7 @@ svg.main > * {
 .side-menu-content {
     width: 100%;
     margin: 1.5em;
+    padding-bottom: calc(40px + 1.5em);
 }
 
 $side-menu-handle-radius: 40px;
@@ -101,6 +102,30 @@ $side-menu-bg-color: white;
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.side-menu-footer {
+    width: 100%;
+    margin: 1.5em;
+    position: absolute;
+    bottom: 0;
+}
+
+.side-menu-youtube {
+    position: absolute;
+    border-top-right-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    background-color: $side-menu-bg-color;
+    bottom: 0;
+    padding: 1em;
+    right: calc(-352px - 2em);
+    z-index: inherit;
+    transition: opacity 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.side-menu-youtube-hide {
+    opacity: 0;
 }
 
 .pad-left-1 {

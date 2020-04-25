@@ -7,6 +7,7 @@ import NightSky from './parts/background/scenes/nightsky';
 import HeartScatter from './parts/background/scenes/heartscatter';
 import Castle from './parts/background/elements/castle';
 import Letters from './parts/background/scenes/letters';
+import Milestone from './parts/background/elements/milestone';
 
 export const BACKDROPS = [
   {
@@ -60,7 +61,20 @@ export const OBJECTS = [
     element: <Letters key="letters" />,
     colors: { group: 'objectColors', keys: ['ENVELOPE_BODY', 'ENVELOPE_FLAP', 'PAPER', 'PAPER_GB'] },
   },
-]
+];
+
+export const SPECIALS = [
+  {
+    icon: <i className="fas fa-times" style={{marginLeft: 2, marginRight: 1}} />,
+    element: null,
+    colors: { group: 'specialColors', keys: [] },
+  },
+  {
+    icon: <i className="fas fa-birthday-cake" style={{marginLeft: 2, marginRight: 2}} />,
+    element: <Milestone key="milestone" />,
+    colors: { group: 'specialColors', keys: ['TEXT_300K'] },
+  },
+];
 
 const initialState = {
   showBackground: true,
@@ -68,9 +82,11 @@ const initialState = {
   backdropIndex: 1,
   dressingIndex: 1,
   objectIndex: 1,
+  specialIndex: 1,
   rate: 3.5,
   swing: 4.5,
   bob: 30,
+  bgmURL: '',
 };
 
 function Reducer(state, { type, value }) {
@@ -100,6 +116,11 @@ function Reducer(state, { type, value }) {
         ...state,
         objectIndex: value,
       }
+    case 'SET_SPECIAL':
+      return {
+        ...state,
+        specialIndex: value,
+      }
     case 'SET_RATE':
       return {
         ...state,
@@ -114,6 +135,11 @@ function Reducer(state, { type, value }) {
       return {
         ...state,
         bob: value,
+      }
+    case 'SET_BGM':
+      return {
+        ...state,
+        bgmURL: value,
       }
     case 'RESET':
       return initialState;

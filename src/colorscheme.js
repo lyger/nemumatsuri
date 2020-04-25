@@ -23,6 +23,9 @@ const initialState = {
     PAPER: '#fffff5',
     PAPER_GB: '#fffff5',
   },
+  specialColors : {
+    TEXT_300K: '#fff200',
+  },
   matsuriColors: {
     EYES: '#7f6851',
     SKIN: '#fff0d5',

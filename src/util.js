@@ -24,11 +24,17 @@ export function useShortcuts(list) {
   useEffect(() => {
     const handlers = list.map(({ key, fn }) => {
       function handler(e) {
-        if (e.isComposing || e.keyCode === 229) return;
-        if (e.code === key) {
-          e.preventDefault();
-          e.stopPropagation();
-          fn();
+        switch (e.target.tagName.toLowerCase()) {
+          case 'input':
+          case 'textarea':
+            return;
+          default:
+            if (e.isComposing || e.keyCode === 229) return;
+            if (e.code === key) {
+              e.preventDefault();
+              e.stopPropagation();
+              fn();
+            }
         }
       }
       document.addEventListener('keydown', handler);
