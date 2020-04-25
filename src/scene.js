@@ -71,7 +71,7 @@ export const SPECIALS = [
   },
   {
     icon: <i className="fas fa-birthday-cake" style={{marginLeft: 2, marginRight: 2}} />,
-    element: <Milestone />,
+    element: <Milestone key="milestone" />,
     colors: { group: 'specialColors', keys: ['TEXT_300K'] },
   },
 ];
@@ -86,6 +86,7 @@ const initialState = {
   rate: 3.5,
   swing: 4.5,
   bob: 30,
+  bgmURL: '',
 };
 
 function Reducer(state, { type, value }) {
@@ -134,6 +135,11 @@ function Reducer(state, { type, value }) {
       return {
         ...state,
         bob: value,
+      }
+    case 'SET_BGM':
+      return {
+        ...state,
+        bgmURL: value,
       }
     case 'RESET':
       return initialState;
