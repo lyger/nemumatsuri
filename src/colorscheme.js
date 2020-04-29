@@ -18,8 +18,8 @@ const initialState = {
   },
   objectColors: {
     CASTLE:'#5e74b9',
-    ENVELOPE_FLAP: '#a7f8ff',
-    ENVELOPE_BODY: '#81d3e0',
+    ENVELOPE_FLAP: '#d7d7ff',
+    ENVELOPE_BODY: '#a9a9ff',
     PAPER: '#fffff5',
     PAPER_GB: '#fffff5',
   },
@@ -34,7 +34,7 @@ const initialState = {
     HAIR_SHADOW: '#936c51',
     YELLOW: '#fffaa8',
     YELLOW_SHADOW: '#f0de85',
-    BLACK: '#58484E',
+    BLACK: '#695f5c',
   },
   ebifrionColors: {
     MANE: '#cf9c69',

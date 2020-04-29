@@ -27,7 +27,7 @@ function getYouTubeVideoId(url) {
   return null;
 }
 
-export default function BGMSelector({ collapsed }) {
+export default function BGMFooter({ collapsed, children }) {
   const [ { bgmURL }, dispatch ] = useContext(SceneContext);
   const [player, setPlayer] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -42,27 +42,28 @@ export default function BGMSelector({ collapsed }) {
   return (
     <React.Fragment>
       <div className="side-menu-footer">
-      <LabeledRow>
-        <i className="fas fa-music" />
-        <div className="field has-addons">
-          <div className="control">
-            <input
-              className="input"
-              type="text"
-              placeholder="YouTube URL"
-              value={bgmURL}
-              onChange={(e) => dispatch({type: 'SET_BGM', value: e.target.value})} />
+        <LabeledRow>
+          <i className="fas fa-music" />
+          <div className="field has-addons">
+            <div className="control">
+              <input
+                className="input"
+                type="text"
+                placeholder="YouTube URL"
+                value={bgmURL}
+                onChange={(e) => dispatch({type: 'SET_BGM', value: e.target.value})} />
+            </div>
+            <div className="control">
+              <button
+                className={`button is-light${(videoId !== null && player == null) ? ' is-loading' : ''}`}
+                onClick={togglePlay}
+                disabled={videoId === null || player === null}>
+                <i className={`fas fa-${(isPlaying) ? 'pause' : 'play'}`} />
+              </button>
+            </div>
           </div>
-          <div className="control">
-            <button
-              className={`button is-light${(videoId !== null && player == null) ? ' is-loading' : ''}`}
-              onClick={togglePlay}
-              disabled={videoId === null || player === null}>
-              <i className={`fas fa-${(isPlaying) ? 'pause' : 'play'}`} />
-            </button>
-          </div>
-        </div>
-      </LabeledRow>
+        </LabeledRow>
+        {children}
       </div>
       {(videoId !== null) &&
         <YouTube

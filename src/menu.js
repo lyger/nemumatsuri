@@ -4,7 +4,7 @@ import { ColorContext } from './colorscheme';
 import { ChromePicker } from 'react-color';
 import { SceneContext, BACKDROPS, DRESSINGS, OBJECTS, SPECIALS } from './scene';
 import { LabeledRow, ColorSelector, ShowButtons, Slider, ScenerySelector } from './menu/ui';
-import BGMSelector from './menu/bgm';
+import BGMFooter from './menu/bgm';
 
 
 export default function Menu() {
@@ -136,7 +136,11 @@ export default function Menu() {
           </motion.div>
 
         </div>
-        <BGMSelector collapsed={collapsed} />
+        <BGMFooter collapsed={collapsed}>
+          <p className="has-text-centered">
+            <a href="https://github.com/lyger/nemumatsuri" target="_blank"><i className="fab fa-github" />&nbsp;GitHub</a>
+          </p>
+        </BGMFooter>
       </motion.div>
     </React.Fragment>
   );
