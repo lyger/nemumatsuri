@@ -1,92 +1,107 @@
-import React, { useContext } from 'react';
-import { motion } from "framer-motion";
+import React, { useContext, useEffect } from 'react';
+import { motion, useAnimation } from "framer-motion";
 import { ColorContext } from '../../../colorscheme';
-import { Star } from './shapes';
 import Flutter from './flutter';
 
 
-function Glow({ children }) {
-  const [ { specialColors } ] = useContext(ColorContext);
-  return (
-    <React.Fragment>
-      <defs>
-        {children}
-      </defs>
-      <filter id="milestone_blur">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
-      </filter>
-      {React.Children.map(children, (child, i) =>
-        <React.Fragment key={i}>
-          <use href={`#${child.props.id}`} style={{stroke: specialColors.TEXT_300K, fill: specialColors.TEXT_300K}} filter="url(#milestone_blur)" />
-          <use href={`#${child.props.id}`} style={{stroke: 'white', fill: 'white'}} />
-        </React.Fragment>
-      )}
-    </React.Fragment>
-  );
+function Letter2(props) {
+  return <path {...props} d="m -111.89999,-104.79953 c 33.666669,-28.66667 63.833337,-44.16667 90.500004,-46.5 27,-2.33333 48,-1.16667 63,3.5 15.333333,4.33333 29.166667,12.33333 41.5,24 12.666664,11.33333 22.333326,28.166667 28.999996,50.5 6.66667,22 2,43.5 -13.999996,64.5 0,0 -83.5,77 -83.5,77 44,4 81.499999,3.666667 112.499996,-1 0,0 -1,74 -1,74 -72.666664,6.66667 -144.666663,5.66667 -215.999996,-3 0,0 2,-79 2,-79 63.333333,-46.333333 98,-74.833333 104,-85.5 6,-11 8.166667,-21.666667 6.5,-32 -1.666667,-10.666667 -10.333333,-17.666667 -26.0000003,-21 -15.3333327,-3.666667 -41.3333327,7.833333 -77.9999997,34.5 0,0 -30.500004,-60 -30.500004,-60" />
+}
+
+function LetterY(props) {
+  return <path {...props} d="m -144.5,-145.19083 c 0,0 88,-14.5 88,-14.5 17.333333,50.33334 38.5,85.833337 63.5,106.500004 27,-28.666667 44.666667,-64.333334 53,-107.000004 0,0 87.5,25 87.5,25 C 125.83333,-70.190827 94,-16.024159 52,27.309174 c 0,0 0,130.999996 0,130.999996 0,0 -83.5,-1 -83.5,-1 0,0 -6,-127.999996 -6,-127.999996 -41,-47.333333 -76.66667,-105.500001 -107,-174.500004 0,0 0,0 0,0" />
+}
+
+function LetterE(props) {
+  return <path {...props} d="m 121.57742,139.88853 c -34.333331,13.66667 -66.166664,20.5 -95.499997,20.5 -29.3333333,0.33333 -52,-3.66667 -68,-12 -15.666667,-8.66667 -28.666667,-21.16667 -39,-37.5 C -91.25591,94.5552 -99.255911,71.721868 -104.92258,42.388535 c -5.33333,-29.333334 -5.5,-57.666667 -0.5,-85 5,-27.333333 15.500003,-53.333335 31.500003,-78.000005 16,-25 43.166667,-38.66667 81.5000001,-41 38.6666669,-2.66667 77.1666659,5.66667 115.4999969,25 0,0 -33.999997,73.500005 -33.999997,73.500005 -29,-18 -55.833333,-25.833333 -80.4999999,-23.5 -24.3333331,2.333333 -36.5000001,19 -36.5000001,50 36,-2.333333 74,-1.666667 114,2 0,0 7.5,67 7.5,67 -42.666667,4.333333 -83.333333,4.333333 -122,0 1.666667,26.333333 11.333333,42.166667 29.0000001,47.5 17.9999999,5.333333 50.1666669,2.666667 96.4999999,-8 0,0 24.499997,67.999995 24.499997,67.999995" />
+}
+
+function LetterA(props) {
+  return <path {...props} d="m -123.53181,159.77583 c -2.33333,-94.666665 -1,-158.499997 4,-191.499997 5.33333,-33 14,-60.666668 25.999995,-83.000003 12,-22.66667 29.833333,-37.16667 53.5,-43.5 24,-6.66667 46.0000003,-5.83333 66,2.5 20,8.33333 37.333333,22.66667 52,43 14.666667,20.333335 26.166665,52.833336 34.500005,97.500003 8.33333,44.666667 15.16667,102.166666 20.5,172.499997 0,0 -82.500005,0 -82.500005,0 0,0 -9,-96.499997 -9,-96.499997 0,0 -89,-1 -89,-1 0,0 -3,95.499997 -3,95.499997 0,0 -72.999995,4.5 -72.999995,4.5 M 31.468185,-18.224167 c -0.333333,-23.666667 -5.166667,-39.833333 -14.5,-48.5 -8.9999997,-8.666667 -17.9999997,-12.666667 -27,-12 -9,0.666667 -16,5.666667 -21,15 -5,9 -8.166667,24.666667 -9.5,47 0,0 72,-1.5 72,-1.5" />
+}
+
+function LetterR(props) {
+  return <path {...props} d="m -125,-152.39084 c 9.66667,-1.66667 26.5,-3.83333 50.5,-6.5 24.333333,-2.66667 55,-4 92,-4 37.333333,0 63,6.33333 77,19 14,12.66667 23.16667,29.33333 27.5,50.000001 4.66667,20.666667 3.66667,42.5 -3,65.5 -6.66667,22.6666669 -20.333333,40 -41,52 0,0 59.5,109.499999 59.5,109.499999 0,0 -81,26.5 -81,26.5 0,0 -61,-108.999999 -61,-108.999999 -9.333333,1 -21.166667,-0.166667 -35.5,-3.5 0,0 -6,109.999999 -6,109.999999 0,0 -84.5,-4 -84.5,-4 0,0 5.5,-305.5 5.5,-305.5 m 83.5,129.500001 c 31,0 51,-1.666667 60,-5 9,-3.333333 15.166667,-11.833333 18.5,-25.5 3.333333,-13.666667 -0.833333,-23.833333 -12.5,-30.5 -11.333333,-6.666667 -33.3333333,-8.333333 -66,-5 0,0 0,66 0,66" />
+}
+
+function LetterS(props) {
+  return <path {...props} d="m 99.412514,-41.905411 c -26.333333,-14.666667 -46.333333,-25 -60,-31 -13.333333,-6.333333 -26.333333,-10.166667 -39.00000027,-11.5 -12.66666673,-1.333333 -20.16666673,1.666667 -22.49999973,9 -2,7 1.5,13.5 10.5,19.5 8.9999998,5.666667 21.3333331,11.333333 37,17 15.666667,5.333333 31.333333,11.833333 47,19.5 16,7.666667 29.833336,17.5000001 41.499996,29.5 11.66667,12 16.66667,29.166667 15,51.5 -1.33333,22.333333 -6.83333,41.166671 -16.5,56.500001 -9.33333,15.33333 -23.166663,26.5 -41.499996,33.5 -18.333333,7 -39.166667,9.83333 -62.5000003,8.5 -23.3333327,-1 -41.8333327,-4.66667 -55.4999997,-11 -13.666667,-6.33333 -25.833333,-13.5 -36.5,-21.5 -10.666667,-8 -22.166664,-18.83333 -34.500004,-32.500001 0,0 53.500004,-58 53.500004,-58 20.666667,21 37.833333,32.5 51.5,34.5 13.66666647,1.666667 25.333333,2.5 35,2.5 9.666667,-0.333333 15.333333,-4.666667 17,-13 2,-8.333333 -7.333333,-15.5 -28,-21.5 -20.3333333,-6.333333 -40.333333,-14.166667 -60,-23.5 -19.333333,-9.3333332 -35,-22.4999999 -47,-39.5 -11.666674,-17 -16.666674,-36 -15.000004,-57 1.66667,-20.999999 7.16667,-38.166669 16.500004,-51.499999 9.333333,-13.33333 23.5,-22.33333 42.5,-27 19.333333,-5 44.8333333,-4.83333 76.5,0.5 32,5.33333 65.833332,17.5 101.499996,36.5 0,0 -26.499996,79.999999 -26.499996,79.999999" />
 }
 
 
-function StarBurst({ id, num, x, y, span, shift, duration }) {
-  const stars = [];
-  const baseTransition = {
-    repeatDelay: (1 + Math.random()) * duration,
-    delay: (1 + Math.random()) * 1.5,
-    loop: Infinity,
-  };
-  for (let i = 0; i < num; i++) {
-    const dx = span * (2 * Math.random() - 1 + shift);
-    const dy = span * (1 + Math.random()) * 0.67;
-    const dur = (duration || 1) * (9 + Math.random()) * 0.1;
-    const variants = {
-      init: {x: x, y: y, scale: 0, rotate: 0, opacity: 1},
-      xMove: {x: x + dx, transition: {...baseTransition, ease: 'circOut', duration: dur}},
-      yMove: {y: y + dy, transition: {...baseTransition, ease: 'circIn', duration: dur}},
-      spinScale: {scale: 1, rotate: 360 * (3 + Math.random()) * 0.25, transition: {...baseTransition, ease: 'easeOut', duration: dur}},
-      fade: {opacity: [1, 0], transition: {...baseTransition, ease: 'linear', duration: dur, times: [0.7, 1]}}
-    };
-    stars.push(
-      <motion.g
-        key={i}
-        variants={variants}
-        initial="init"
-        animate={['xMove', 'yMove', 'spinScale', 'fade']}>
-        <Star scale={(0.5 + Math.random() * Math.random()) * 0.12} tilt={Math.random() * 60} />
-      </motion.g>
-    );
+function Twirl({ delay, style, children }) {
+  delay = (delay === undefined) ? 0 : delay;
+  const variants = {
+    'init': { rotate: 0, scale: 0 },
+    'show': { rotate: 360, scale: 1, transition: {type: 'spring', stiffness: 150, damping: 10, mass: 1.5} },
+    'exit': { rotate: 0, scale: 0, transition: {ease: 'easeInOut', duration: 1}},
   }
-  return(
-    <motion.g id={id} initial={{opacity: 1}} animate={{opacity: 1}} exit={{opacity: 0}} style={{rotate: -15}}>
-      {stars}
+  const childVariants = {
+    'flick': {
+      rotate: 0,
+      transition: {type: 'spring', velocity: 100, stiffness: 60, damping: 5, mass: 1, delay: 3 + delay * 1.5},
+    },
+  }
+  const twirlControl = useAnimation();
+  const twirlLoop = () => { twirlControl.start('flick').then(twirlLoop) };
+  useEffect(twirlLoop, [twirlControl, delay]);
+  return (
+    <motion.g variants={variants}>
+      <defs>
+        {children}
+      </defs>
+      {React.Children.map(children, (child, i) => {
+        return (
+          <motion.g key={i}
+            animate={twirlControl}
+            variants={childVariants}>
+            <use key={`body${i}`} style={style} href={'#' + child.props.id} />,
+            <motion.use
+              key={`burst${i}`}
+              href={'#' + child.props.id} style={{...style, fillOpacity: 0, strokeWidth: 5}}
+              animate={{scale: [1, 1, 1.1, 1.2], opacity: [0, 1, 1, 0]}}
+              transition={{ease: 'easeInOut', duration: 5 + delay / 10, times: [0, 0.9, 0.95, 1], loop: Infinity, delay}} />
+          </motion.g>
+        );
+      })}
     </motion.g>
   );
 }
 
 
 export default function Milestone() {
+  const [ { specialColors } ] = useContext(ColorContext);
+  const y = 540;
+  const xSpacing = 260;
+  const offset = xSpacing * 0.2;
+  const center = 1080;
   const variants = {
-    hide: {pathLength: 0, pathOffset: 0, strokeOpacity: 0},
-    show: {pathLength: [0, 1], pathOffset: [0, 0], strokeOpacity: [1, 1], transition: {ease: 'linear', duration: 2, delay: 0.5}},
-    exit: {pathLength: [1, 0, 0], pathOffset: [0, 1, 1], strokeOpacity: [1, 1, 0], transition: {ease: 'linear', duration: 2, times: [0, 0.99, 1]}},
+    init: {},
+    show: {transition: {staggerChildren: 0.1}},
+    exit: {transition: {staggerChildren: 0.1}},
   }
   return (
-    <Flutter x={40} y={30} span={17} noTransition>
-      <Glow>
-        <motion.path
-          id="milestone_path"
-          d="m 0,0 c 0,0 3.5,32.4 -22.8,65.8 -20.4,26 -28.6,19.2 -17,-4.2 21.2,-43 81.1,-59.6 103,-28.4 20.2,28.7 -8.6,86.4 -45.9,120.2 -19.2,17.4 -43.6,23.9 -25.5,2.7 21.7,-25.5 66.6,-38.3 89.1,-5.3 23.1,33.8 -1.9,98.5 -37.5,155.3 -31.8,50.7 -66.1,76.6 -72.1,72.1 -8,-5.8 -5.8,-27 82.7,-117.2 84.2,-85.7 124.7,-176.2 124.7,-176.2 0,0 -33.3,49.9 -31.9,82.8 1.6,40 24.4,64.7 53.8,67.2 30.1,2.6 56.9,-24.2 67.1,-63.4 10.1,-38.7 -29.1,-87.1 -66.2,-89.3 -37.1,-2.1 32.1,13 71.4,11.7 38.7,-1.3 59.5,-7.9 59.5,-7.9 0,0 -33.3,49.9 -31.9,82.8 1.6,40 24.4,64.7 53.8,67.2 30.1,2.6 56.9,-24.2 67.1,-63.4 10.1,-38.7 -29.1,-87.1 -66.2,-89.3 -37.1,-2.1 32.1,13 71.4,11.7 38.7,-1.3 59.5,-7.9 59.5,-7.9 0,0 -33.3,49.9 -31.9,82.8 1.6,40 24.4,64.7 53.8,67.2 30.1,2.6 56.9,-24.2 67.1,-63.4 10.1,-38.7 -29.1,-87.1 -66.2,-89.3 -37.1,-2.1 32.1,13 71.4,11.7 38.7,-1.3 59.5,-7.9 59.5,-7.9 0,0 -33.3,49.9 -31.9,82.8 1.6,40 24.4,64.7 53.8,67.2 30.1,2.6 56.9,-24.2 67.1,-63.4 10.1,-38.7 -29.1,-87.1 -66.2,-89.3 -37.1,-2.1 32.1,13 71.4,11.7 38.7,-1.3 59.5,-7.9 59.5,-7.9 0,0 -33.3,49.9 -31.9,82.8 1.6,40 24.4,64.7 53.8,67.2 30.1,2.6 56.9,-24.2 67.1,-63.4 10.1,-38.7 -29.1,-87.1 -66.2,-89.3 -37.1,-2.1 32.1,13 71.4,11.7 38.7,-1.3 59.5,-7.9 59.5,-7.9 "strokeDasharray="0 1"
-          variants={variants}
-          initial="hide"
-          animate="show"
-          exit="exit"
-          style={{scale: 0.7, rotate: -15, fillOpacity: 0, strokeWidth: 10, strokeLinejoin: 'round', strokeLinecap: 'round'}} />
-        <StarBurst id="milestone_burst1" num={3} x={120} y={160} span={80} shift={-0.4} duration={0.75} />
-        <StarBurst id="milestone_burst2" num={4} x={190} y={350} span={80} shift={-0.3} duration={0.75} />
-        <StarBurst id="milestone_burst3" num={3} x={300} y={200} span={80} shift={-0.2} duration={0.75} />
-        <StarBurst id="milestone_burst4" num={4} x={420} y={120} span={80} shift={0} duration={0.75} />
-        <StarBurst id="milestone_burst5" num={3} x={500} y={200} span={80} shift={0.1} duration={0.75} />
-        <StarBurst id="milestone_burst6" num={3} x={600} y={100} span={80} shift={0.2} duration={0.75} />
-        <StarBurst id="milestone_burst7" num={4} x={730} y={30} span={80} shift={0.4} duration={0.75} />
-      </Glow>
+    <Flutter x={0} y={0} span={50} noTransition>
+    <motion.g style={{fill: specialColors.TEXT_2YEARS, stroke: specialColors.TEXT_2YEARS, strokeLinecap: 'round'}} variants={variants} initial="init" animate={['show', 'idle']} exit="exit">
+      <Twirl delay={0.5} style={{x: center - offset - 3 * xSpacing, y}}>
+        <Letter2 id="milestone_2" />
+      </Twirl>
+      <Twirl style={{x: center + offset - 2 * xSpacing, y}}>
+        <LetterY id="milestone_y" />
+      </Twirl>
+      <Twirl delay={1} style={{x: center + offset - xSpacing - 20, y}}>
+        <LetterE id="milestone_e" />
+      </Twirl>
+      <Twirl delay={1.7} style={{x: center + offset - 20, y}}>
+        <LetterA id="milestone_a" />
+      </Twirl>
+      <Twirl delay={0.3} style={{x: center + offset + xSpacing, y}}>
+        <LetterR id="milestone_r" />
+      </Twirl>
+      <Twirl delay={1.2} style={{x: center + offset + 2 * xSpacing, y}}>
+        <LetterS id="milestone_s" />
+      </Twirl>
+    </motion.g>
     </Flutter>
   );
 }

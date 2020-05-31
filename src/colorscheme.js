@@ -24,7 +24,7 @@ const initialState = {
     PAPER_GB: '#fffff5',
   },
   specialColors : {
-    TEXT_300K: '#fff200',
+    TEXT_2YEARS: '#7290ff',
   },
   matsuriColors: {
     EYES: '#7f6851',

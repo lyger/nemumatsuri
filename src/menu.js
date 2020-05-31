@@ -138,7 +138,7 @@ export default function Menu() {
         </div>
         <BGMFooter collapsed={collapsed}>
           <p className="has-text-centered">
-            <a href="https://github.com/lyger/nemumatsuri" target="_blank"><i className="fab fa-github" />&nbsp;GitHub</a>
+            <a href="https://github.com/lyger/nemumatsuri" target="_blank" rel="noopener noreferrer"><i className="fab fa-github" />&nbsp;GitHub</a>
           </p>
         </BGMFooter>
       </motion.div>

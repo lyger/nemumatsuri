@@ -72,7 +72,7 @@ export const SPECIALS = [
   {
     icon: <i className="fas fa-birthday-cake" style={{marginLeft: 2, marginRight: 2}} />,
     element: <Milestone key="milestone" />,
-    colors: { group: 'specialColors', keys: ['TEXT_300K'] },
+    colors: { group: 'specialColors', keys: ['TEXT_2YEARS'] },
   },
 ];
 
