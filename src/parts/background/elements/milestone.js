@@ -39,7 +39,7 @@ function Twirl({ delay, style, children }) {
   const childVariants = {
     'flick': {
       rotate: 0,
-      transition: {type: 'spring', velocity: 100, stiffness: 60, damping: 5, mass: 1, delay: 3 + delay * 1.5},
+      transition: {type: 'spring', velocity: 100, stiffness: 60, damping: 5, mass: 1, delay: 3 + delay * 1.9},
     },
   }
   const twirlControl = useAnimation();
@@ -55,7 +55,7 @@ function Twirl({ delay, style, children }) {
           <motion.g key={i}
             animate={twirlControl}
             variants={childVariants}>
-            <use key={`body${i}`} style={style} href={'#' + child.props.id} />,
+            <motion.use key={`body${i}`} style={style} href={'#' + child.props.id} />,
             <motion.use
               key={`burst${i}`}
               href={'#' + child.props.id} style={{...style, fillOpacity: 0, strokeWidth: 5}}
@@ -83,22 +83,22 @@ export default function Milestone() {
   return (
     <Flutter x={0} y={0} span={50} noTransition>
     <motion.g style={{fill: specialColors.TEXT_2YEARS, stroke: specialColors.TEXT_2YEARS, strokeLinecap: 'round'}} variants={variants} initial="init" animate={['show', 'idle']} exit="exit">
-      <Twirl delay={0.5} style={{x: center - offset - 3 * xSpacing, y}}>
+      <Twirl delay={0.5} style={{x: center - offset - 3 * xSpacing, y: y - 20}}>
         <Letter2 id="milestone_2" />
       </Twirl>
-      <Twirl style={{x: center + offset - 2 * xSpacing, y}}>
+      <Twirl style={{x: center + offset - 2 * xSpacing, y: y + 30}}>
         <LetterY id="milestone_y" />
       </Twirl>
-      <Twirl delay={1} style={{x: center + offset - xSpacing - 20, y}}>
+      <Twirl delay={1} style={{x: center + offset - xSpacing - 20, y: y + 45}}>
         <LetterE id="milestone_e" />
       </Twirl>
-      <Twirl delay={1.7} style={{x: center + offset - 20, y}}>
+      <Twirl delay={1.7} style={{x: center + offset - 20, y: y - 15}}>
         <LetterA id="milestone_a" />
       </Twirl>
-      <Twirl delay={0.3} style={{x: center + offset + xSpacing, y}}>
+      <Twirl delay={0.3} style={{x: center + offset + xSpacing, y: y + 20}}>
         <LetterR id="milestone_r" />
       </Twirl>
-      <Twirl delay={1.2} style={{x: center + offset + 2 * xSpacing, y}}>
+      <Twirl delay={1.2} style={{x: center + offset + 2 * xSpacing, y: y + 35}}>
         <LetterS id="milestone_s" />
       </Twirl>
     </motion.g>

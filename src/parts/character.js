@@ -14,7 +14,7 @@ export default function Character() {
     },
     enter: {
       translateY: 0,
-      transition: {type: 'spring', stiffness: 70, damping: 10, mass: 2},
+      transition: {type: 'spring', stiffness: 70, damping: 10, mass: 2, delay: 1.5},
     },
     swing: {
       rotate: [-swing, swing, -swing],
