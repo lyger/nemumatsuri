@@ -10,11 +10,11 @@
     "bulma": "^0.8.2",
     "bulma-slider": "^2.0.0",
     "framer-motion": "^1.10.3",
-    "node-sass": "^4.13.1",
+    "node-sass": "^9.0.0",
     "react": "^16.13.1",
     "react-color": "^2.18.0",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
+    "react-scripts": "5.0.1",
     "react-youtube": "^7.11.2"
   },
   "scripts": {
